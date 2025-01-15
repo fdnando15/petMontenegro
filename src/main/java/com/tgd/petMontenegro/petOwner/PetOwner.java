@@ -2,8 +2,7 @@ package com.tgd.petMontenegro.petOwner;
 
 
 import com.tgd.petMontenegro.clinicOwner.ClinicOwner;
-import com.tgd.petMontenegro.models.BaseClass;
-
+import com.tgd.petMontenegro.utils.BaseClass;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

@@ -24,5 +24,10 @@ async function registerClinicOwner() {
     //const response =  await request.json();        
     
     console.log(datos)
+    if (request.ok) {
+      window.location.href = 'loginClinicOwner.html';
+      } else {
+      alert('Error al registrar el ClinicOwner');
+  }
 
 }

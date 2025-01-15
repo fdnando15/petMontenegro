@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tgd.petMontenegro.petOwner.PetOwner;
 import com.tgd.petMontenegro.petOwner.PetOwnerService;
+import com.tgd.petMontenegro.utils.JwtUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
 

@@ -1,7 +1,7 @@
 package com.tgd.petMontenegro.clinicOwner;
 
 
-import com.tgd.petMontenegro.models.BaseClass;
+import com.tgd.petMontenegro.utils.BaseClass;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;

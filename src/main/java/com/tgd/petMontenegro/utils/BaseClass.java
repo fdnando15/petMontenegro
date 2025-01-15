@@ -1,7 +1,9 @@
-package com.tgd.petMontenegro.models;
+package com.tgd.petMontenegro.utils;
 
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,8 +26,10 @@ public class BaseClass {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private String birthDay;
 
+    @Column(unique = true, nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private String password;
 
     private Integer phone;

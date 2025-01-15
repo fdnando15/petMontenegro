@@ -6,8 +6,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.tgd.petMontenegro.models.BaseClass;
 import com.tgd.petMontenegro.petOwner.PetOwner;
+import com.tgd.petMontenegro.utils.BaseClass;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;

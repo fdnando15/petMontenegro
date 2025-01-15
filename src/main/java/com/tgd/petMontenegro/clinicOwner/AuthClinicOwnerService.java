@@ -2,6 +2,9 @@ package com.tgd.petMontenegro.clinicOwner;
 
 import org.springframework.stereotype.Service;
 
+import com.tgd.petMontenegro.utils.AuthPayload;
+import com.tgd.petMontenegro.utils.JwtUtil;
+
 
 @Service
 public class AuthClinicOwnerService {

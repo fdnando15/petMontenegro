@@ -1,4 +1,4 @@
-package com.tgd.petMontenegro.clinicOwner;
+package com.tgd.petMontenegro.utils;
 
 import lombok.Getter;
 import lombok.Setter;
