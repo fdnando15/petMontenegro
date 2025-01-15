@@ -4,6 +4,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,7 +17,7 @@ import lombok.Setter;
 @MappedSuperclass
 @Getter
 @Setter
-public class BaseClass {
+public abstract class BaseClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +35,15 @@ public class BaseClass {
     private String password;
 
     private Integer phone;
+
+    public enum UserType {
+        CLINIC_OWNER,
+        PET_OWNER,
+        VET
+    }
+
+    @Enumerated(EnumType.STRING)
+    public UserType role;
 
     
 }

@@ -11,6 +11,7 @@ async function registerClinicOwner() {
     datos.email = document.getElementById('email').value
     datos.phone = document.getElementById('phone').value
     datos.password = document.getElementById('password').value
+    datos.role = "CLINIC_OWNER"
     
     const request = await fetch('/api/registerClinicOwner', {
       method: 'POST',

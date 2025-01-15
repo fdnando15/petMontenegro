@@ -19,32 +19,32 @@ public class AuthService {
         this.petOwnerRepository = petOwnerRepository;
     }
 
-    public AuthPayload verifyEmailPasswordClinicOwner(Auth clinicOwner) {
-        ClinicOwner owner = clinicOwnerRepository.findByEmailAndPassword(clinicOwner.getEmail(), clinicOwner.getPassword());
-        if(owner == null) {
-            throw new RuntimeException("Invalid email or password");
-        }else {
-            String token = JwtUtil.generateToken(owner.getId()+"");
-            AuthPayload authPayload = new AuthPayload();
-            authPayload.setJwt(token);
-
-            return authPayload;
-
+    public AuthPayload authenticateAndGenerateToken(Auth auth) {
+        // Buscar en ClinicOwner
+        ClinicOwner clinicOwner = clinicOwnerRepository.findByEmailAndPassword(auth.getEmail(), auth.getPassword());
+        if (clinicOwner != null) {
+            return createAuthPayload(clinicOwner);
         }
+
+        // Buscar en PetOwner
+        PetOwner petOwner = petOwnerRepository.findByEmailAndPassword(auth.getEmail(), auth.getPassword());
+        if (petOwner != null) {
+            return createAuthPayload(petOwner);
+        }
+
+        // Si no se encuentra en ninguna tabla
+        throw new RuntimeException("Invalid email or password");
     }
 
-    public AuthPayload verifyEmailPasswordPetOwner(Auth petOwner) {
-        PetOwner owner = petOwnerRepository.findByEmailAndPassword(petOwner.getEmail(), petOwner.getPassword());
-        if(owner == null) {
-            throw new RuntimeException("Invalid email or password");
-        }else {
-            String token = JwtUtil.generateToken(owner.getId()+"");
-            AuthPayload authPayload = new AuthPayload();
-            authPayload.setJwt(token);
-
-            return authPayload;
-
-        }
+    private AuthPayload createAuthPayload(BaseClass user) {
+        // Generar el token con el rol del usuario
+        String token = JwtUtil.generateToken(user.getEmail()+"", user.getRole().toString());
+        AuthPayload authPayload = new AuthPayload();
+        authPayload.setJwt(token);
+        return authPayload;
     }
-
 }
+
+    
+    
+

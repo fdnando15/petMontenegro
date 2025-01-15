@@ -49,6 +49,7 @@ async function registerPetOwners() {
   datos.email = document.getElementById('email').value;
   datos.phone = document.getElementById('phone').value;
   datos.password = document.getElementById('password').value;
+  datos.role = "PET_OWNER";
   
   // Obtener el clinicOwner completo desde el select
   const clinicOwnerId = document.getElementById('clinicOwners').value;

@@ -17,12 +17,12 @@ public class AuthController {
 
     @PostMapping("/api/loginClinicOwner")
     public AuthPayload verifyEmailPasswordClinicOwner(@RequestBody Auth clinicOwner) {
-        return authService.verifyEmailPasswordClinicOwner(clinicOwner);
+        return authService.authenticateAndGenerateToken(clinicOwner);
     }
 
     @PostMapping("/api/loginPetOwner")
     public AuthPayload verifyEmailPasswordPetOwner(@RequestBody Auth petOwner) {
-        return authService.verifyEmailPasswordPetOwner(petOwner);
+        return authService.authenticateAndGenerateToken(petOwner);
     }
 
 }
