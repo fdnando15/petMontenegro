@@ -77,6 +77,12 @@ async function registerPetOwners() {
     },
     body: JSON.stringify(datos),
   });
+
+  console.log(datos)
+    if (request.ok) {
+      window.location.href = 'loginPetOwner.html';
+      } else {
+      alert('Error al registrar el ClinicOwner');
+  }
   
-  console.log(datos);
 }
