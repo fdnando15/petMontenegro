@@ -52,7 +52,9 @@ public class ClinicOwnerController {
                 String role = JwtUtil.extractRole(token);
                 
                 
-                Long id = Long.parseLong(JwtUtil.extractUsername(token));
+                //Long id = Long.parseLong(JwtUtil.extractUsername(token));
+                String email = JwtUtil.extractUsername(token);
+                Long id = clinicOwnerService.getClinicOwnerId(email);
                 
                 
 
