@@ -49,6 +49,7 @@ async function registerPetOwners() {
   datos.email = document.getElementById('email').value;
   datos.phone = document.getElementById('phone').value;
   datos.password = document.getElementById('password').value;
+  datos.role = "PET_OWNER";
   
   // Obtener el clinicOwner completo desde el select
   const clinicOwnerId = document.getElementById('clinicOwners').value;
@@ -77,6 +78,12 @@ async function registerPetOwners() {
     },
     body: JSON.stringify(datos),
   });
+
+  console.log(datos)
+    if (request.ok) {
+      window.location.href = 'loginPetOwner.html';
+      } else {
+      alert('Error al registrar el ClinicOwner');
+  }
   
-  console.log(datos);
 }

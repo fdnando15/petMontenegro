@@ -42,4 +42,9 @@ public class ClinicOwnerService {
         }
     }
 
+    public Long getClinicOwnerId(String email) {
+        // TODO Auto-generated method stub
+        return clinicOwnerRepository.findByEmail(email).getId();
+    }
+
 }

@@ -8,4 +8,6 @@ public interface ClinicOwnerRepository extends JpaRepository<ClinicOwner, Long> 
 
     ClinicOwner findByEmailAndPassword(String email, String password);
 
+    ClinicOwner findByEmail(String email);
+
 }

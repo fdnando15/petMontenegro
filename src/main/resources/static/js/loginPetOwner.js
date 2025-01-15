@@ -19,10 +19,10 @@ async function loginPetOwner() {
       body: JSON.stringify(datos),
     });
     const response =  await request.json();
-    /*if (request.status == 200) {
+    if (request.status == 200) {
         localStorage.setItem('token', response.jwt);
         window.location.href = "/pets.html";
     }else{
         alert(response)
-    }*/
+    }
 }

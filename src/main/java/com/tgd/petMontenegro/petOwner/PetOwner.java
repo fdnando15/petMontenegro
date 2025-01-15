@@ -22,5 +22,9 @@ public class PetOwner extends BaseClass{
     @JoinColumn(name = "clinic_owner_id")
     private ClinicOwner clinicOwner;
 
+    public PetOwner() {
+        this.setRole(UserType.PET_OWNER); // Asigna el tipo de usuario
+    }
+
 }
 

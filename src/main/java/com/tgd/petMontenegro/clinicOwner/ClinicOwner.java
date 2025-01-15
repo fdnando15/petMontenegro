@@ -14,4 +14,8 @@ public class ClinicOwner extends BaseClass{
 
     private String address;
 
+    public ClinicOwner() {
+        this.setRole(UserType.CLINIC_OWNER); // Asigna el tipo de usuario
+    }
+
 }

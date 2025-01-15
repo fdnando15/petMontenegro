@@ -17,6 +17,7 @@ async function cargarPetOwners() {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   });
+  console.log(request)
   const petOwners = await request.json();
   console.log(petOwners)
 
