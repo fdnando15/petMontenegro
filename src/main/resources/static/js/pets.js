@@ -7,28 +7,29 @@ $(document).ready(function() {
 });
 
 
-function obtenerIdPetOwnerDesdeURL() {
+/*function obtenerIdPetOwnerDesdeURL() {
   const path = window.location.pathname; // Obtiene el path de la URL
   const partes = path.split('/'); // Divide la URL por las "/"
   const id = partes[partes.indexOf('petOwners') + 1]; // Encuentra el ID después de "petOwners"
   return id;
-}
+}*/
 
 
 
 async function cargarPets() {
 
-  const petOwnerId = obtenerIdPetOwnerDesdeURL(); // Extrae el ID de la URL
+  /*const petOwnerId = obtenerIdPetOwnerDesdeURL(); // Extrae el ID de la URL
   if (!petOwnerId) {
     console.error('No se pudo obtener el ID del propietario de mascotas.');
     return;
-  }
+  }*/
 
-  const request = await fetch('api/petOwners/${petOwnerId}/pets', {
+  const request = await fetch('api/petOwners/pets', {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   });
   const pets = await request.json();

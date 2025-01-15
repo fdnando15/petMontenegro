@@ -13,5 +13,8 @@ public interface PetOwnerRepository extends JpaRepository<PetOwner,Long>{
 
     PetOwner findByEmailAndPassword(String email, String password);
 
+    PetOwner findByEmail(String email);
+
+
 
 }

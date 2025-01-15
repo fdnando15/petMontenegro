@@ -16,7 +16,7 @@ public class JwtUtil {
     }
 
     public static String generateToken(String username, String role) {
-        System.out.println("hola " + username);
+        //System.out.println("hola " + username);
         return Jwts.builder()
                 .setSubject(String.valueOf(username))
                 .claim("role", role)
@@ -26,7 +26,7 @@ public class JwtUtil {
     }
 
     public static String extractUsername(String token) {
-        System.out.println("esto funciona");
+        //System.out.println("esto funciona");
         String subject = Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()

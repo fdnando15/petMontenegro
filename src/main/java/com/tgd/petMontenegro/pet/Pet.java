@@ -31,6 +31,9 @@ public class Pet{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private String birthDay;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PetOwner petOwner;
