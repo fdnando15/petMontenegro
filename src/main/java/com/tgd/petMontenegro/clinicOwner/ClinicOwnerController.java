@@ -42,31 +42,18 @@ public class ClinicOwnerController {
                 if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
                     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // No autorizado si no hay token
                 }
-
-                
-                
                 String token = authorizationHeader.replace("Bearer ", "");
-                
-                
                 // Extraer rol y username (ID) del token
                 String role = JwtUtil.extractRole(token);
-                
-                
                 //Long id = Long.parseLong(JwtUtil.extractUsername(token));
                 String email = JwtUtil.extractUsername(token);
                 Long id = clinicOwnerService.getClinicOwnerId(email);
-                
-                
-
                 // Verificar si el rol es el adecuado
                 if (!"CLINIC_OWNER".equals(role)) {
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // Prohibir acceso si no es ClinicOwner
                 }
-
                 // Recuperar y devolver los PetOwners asociados
                 List<PetOwner> petOwners = clinicOwnerService.getPetOwners(id);
-
-                
                 return ResponseEntity.ok(petOwners);
 
             } catch (Exception e) {
@@ -76,16 +63,44 @@ public class ClinicOwnerController {
             }
         }
 
+        @RequestMapping(value = "api/petOwners/{id}", method = RequestMethod.DELETE)
+        public ResponseEntity<Void> deletePetOwner(@PathVariable Long id, HttpServletRequest request) {
+            try {
+                String authorizationHeader = request.getHeader("Authorization");
+                if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+                    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // No autorizado si no hay token
+                }
+        
+                String token = authorizationHeader.replace("Bearer ", "");
+                // Extraer rol y username (ID) del token
+                String role = JwtUtil.extractRole(token);
+                String email = JwtUtil.extractUsername(token);
+                Long clinicOwnerId = clinicOwnerService.getClinicOwnerId(email);
+        
+                // Verificar si el rol es el adecuado
+                if (!"CLINIC_OWNER".equals(role)) {
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // Prohibir acceso si no es ClinicOwner
+                }
+        
+                clinicOwnerService.deletePetOwner(id, clinicOwnerId);
+                return ResponseEntity.noContent().build(); // Éxito, 204 No Content
+        
+            } catch (Exception e) {
+                // Manejar errores genéricos o personalizar según el tipo de excepción
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        }
+        
 
-
-    @RequestMapping(value = "api/petOwners/{id}",method = RequestMethod.DELETE)
+    /*@RequestMapping(value = "api/petOwners/{id}",method = RequestMethod.DELETE)
     public void deletePetOwner(@PathVariable Long id, HttpServletRequest request) {
         String token = request.getHeader("Authorization").split(" ")[1];
         //Check if the token is valid
         System.out.println(token);
         Long ClinicOwnerid = Long.parseLong(JwtUtil.extractUsername(token));
         clinicOwnerService.deletePetOwner(id, ClinicOwnerid);
-    }
+    }*/
+
 
     @PostMapping("/api/registerClinicOwner")
     public void registerClinicOwner(@RequestBody ClinicOwner clinicOwner) {
