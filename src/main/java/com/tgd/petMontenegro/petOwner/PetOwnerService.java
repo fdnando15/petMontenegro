@@ -35,13 +35,20 @@ public class PetOwnerService {
     }
 
     public PetOwner getPetOwnerByEmail(String email) {
-        PetOwner s =  petOwnerRepository.findByEmail(email);
-        System.out.println("Aqui el petOwner" +s.toString());
-        return s;
+        return petOwnerRepository.findByEmail(email);
     }
 
     public List<Pet> getPetsByOwnerId(Long ownerId) {
         return petRepository.findByPetOwnerId(ownerId);
+    }
+
+    public void deletePetOwner(Long id, Long petOwnerId) {
+        Pet pet = petRepository.findById(id).orElseThrow(() -> new IllegalStateException("Pet owner with id " + id + " does not exist"));
+        if (pet.getPetOwner().getId().equals(petOwnerId)) {
+            petRepository.delete(pet);
+        } else {
+            throw new IllegalStateException("Pet owner with id " + id + " does not belong to clinic owner with id " + petOwnerId);
+        }
     }
 
 }

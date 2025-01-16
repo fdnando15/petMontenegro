@@ -90,16 +90,6 @@ public class ClinicOwnerController {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
         }
-        
-
-    /*@RequestMapping(value = "api/petOwners/{id}",method = RequestMethod.DELETE)
-    public void deletePetOwner(@PathVariable Long id, HttpServletRequest request) {
-        String token = request.getHeader("Authorization").split(" ")[1];
-        //Check if the token is valid
-        System.out.println(token);
-        Long ClinicOwnerid = Long.parseLong(JwtUtil.extractUsername(token));
-        clinicOwnerService.deletePetOwner(id, ClinicOwnerid);
-    }*/
 
 
     @PostMapping("/api/registerClinicOwner")
