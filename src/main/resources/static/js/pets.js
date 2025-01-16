@@ -40,7 +40,7 @@ async function cargarPets() {
   for (let pet of pets) {
     let botonEliminar = '<a href="#" onclick="eliminarpetOwner(' + pet.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
 
-    let petHtml = '<tr><td>'+pet.id+'</td><td>' + pet.name + ' ' + pet.birthDate + '</td><td>'
+    let petHtml = '<tr><td>' + pet.name  + '</td><td>' + pet.birthDay + '</td><td>'
                     + '</td><td>' + botonEliminar + '</td></tr>';
     listadoHtml += petHtml;
   }
