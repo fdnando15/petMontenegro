@@ -21,6 +21,7 @@ async function loginPetOwner() {
     const response =  await request.json();
     if (request.status == 200) {
         localStorage.setItem('token', response.jwt);
+        localStorage.setItem('email', datos.email);
         window.location.href = "/pets.html";
     }else{
         alert(response)
