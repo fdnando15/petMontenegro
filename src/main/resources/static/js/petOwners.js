@@ -4,7 +4,14 @@ $(document).ready(function() {
     cargarPetOwners()
 
   $('#petOwners').DataTable();
+
+  actualizarEmail()
 });
+
+function actualizarEmail() {
+  document.querySelector('#txt-email-usuario').innerHTML = localStorage.getItem('email');
+
+}
 
 
 

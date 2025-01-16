@@ -4,6 +4,8 @@ $(document).ready(function() {
     cargarPets()
 
   $('#pets').DataTable();
+
+  actualizarEmail()
 });
 
 
@@ -13,6 +15,11 @@ $(document).ready(function() {
   const id = partes[partes.indexOf('petOwners') + 1]; // Encuentra el ID después de "petOwners"
   return id;
 }*/
+
+function actualizarEmail() {
+  //document.querySelector('#txt-email-usuario').innerHTML = localStorage.getItem();
+  document.getElementById('txt-email-usuario').innerHTML = localStorage.getItem('email');
+}
 
 
 
@@ -40,8 +47,7 @@ async function cargarPets() {
   for (let pet of pets) {
     let botonEliminar = '<a href="#" onclick="eliminarPet(' + pet.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
 
-    let petHtml = '<tr><td>' + pet.name  + '</td><td>' + pet.birthDay + '</td><td>'
-                    + '</td><td>' + botonEliminar + '</td></tr>';
+    let petHtml = '<tr><td>' + pet.name  + '</td><td>' + pet.birthDay + '</td><td>'+ botonEliminar + '</td></tr>';
     listadoHtml += petHtml;
   }
 
