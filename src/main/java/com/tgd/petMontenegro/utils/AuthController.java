@@ -49,5 +49,20 @@ public class AuthController {
         }
     }
 
+    @PostMapping("/api/loginVet")
+    public ResponseEntity<AuthPayload> verifyEmailPasswordVet(@RequestBody Auth vet) {
+        try {
+            AuthPayload authPayload = authService.authenticateAndGenerateToken(vet);
+            if (authPayload != null) {
+                return ResponseEntity.ok(authPayload); // Responde con 200 OK si las credenciales son correctas
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Responde con 401 si las credenciales son incorrectas
+            }
+        } catch (Exception e) {
+            // Manejo de errores generales
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null); // Responde con 500 si ocurre un error
+        }
+    }
+
 
 }

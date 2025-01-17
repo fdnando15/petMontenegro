@@ -6,6 +6,8 @@ import com.tgd.petMontenegro.clinicOwner.ClinicOwner;
 import com.tgd.petMontenegro.clinicOwner.ClinicOwnerRepository;
 import com.tgd.petMontenegro.petOwner.PetOwner;
 import com.tgd.petMontenegro.petOwner.PetOwnerRepository;
+import com.tgd.petMontenegro.vet.Vet;
+import com.tgd.petMontenegro.vet.VetRepostitory;
 
 
 @Service
@@ -13,10 +15,12 @@ public class AuthService {
 
     private ClinicOwnerRepository clinicOwnerRepository;
     private PetOwnerRepository petOwnerRepository;
+    private VetRepostitory vetRepostitory;
 
-    public AuthService(ClinicOwnerRepository clinicOwnerRepository, PetOwnerRepository petOwnerRepository) {
+    public AuthService(ClinicOwnerRepository clinicOwnerRepository, PetOwnerRepository petOwnerRepository, VetRepostitory vetRepostitory) {
         this.clinicOwnerRepository = clinicOwnerRepository;
         this.petOwnerRepository = petOwnerRepository;
+        this.vetRepostitory = vetRepostitory;
     }
 
     public AuthPayload authenticateAndGenerateToken(Auth auth) {
@@ -31,6 +35,13 @@ public class AuthService {
         if (petOwner != null) {
             return createAuthPayload(petOwner);
         }
+
+        // Buscar en Vet
+        Vet vet = vetRepostitory.findByEmailAndPassword(auth.getEmail(), auth.getPassword());
+        if (vet != null) {
+            return createAuthPayload(vet);
+        }
+
 
         // Si no se encuentra en ninguna tabla
         throw new RuntimeException("Invalid email or password");
