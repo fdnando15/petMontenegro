@@ -24,7 +24,7 @@ public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String subject;
 
     private LocalDate date;
     private String description;
@@ -34,5 +34,8 @@ public class Consultation {
 
     @ManyToOne
     private Pet pet;
+
+    //@ManyToOne
+    //private Vet vet;
 
 }
