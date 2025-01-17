@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tgd.petMontenegro.pet.Pet;
 import com.tgd.petMontenegro.pet.PetRepository;
+import com.tgd.petMontenegro.vet.VetRepostitory;
 
 @Service
 public class ConsultationService {
@@ -32,6 +33,10 @@ public class ConsultationService {
             }
             return consultationRepository.findByPetId(looking.getId());
         
+    }
+
+    public List<Consultation> getConsultationsByVetId(Long id){
+        return consultationRepository.findAllByVetId(id);
     }
 
 

@@ -13,4 +13,12 @@ public class VetService {
         this.vetRepostitory=vetRepostitory;
     }
 
+
+    public Long getVetId(String email) {
+        
+        return vetRepostitory.findByEmail(email).getId();
+    }
+
+
+
 }

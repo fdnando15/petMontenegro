@@ -25,7 +25,7 @@ function mostrarLocalStorage() {
 }
 
 async function cargarConsultations() {
-    const request = await fetch('api/consultations/', {
+    const request = await fetch('api/consultations', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

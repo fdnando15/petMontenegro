@@ -11,5 +11,6 @@ import com.tgd.petMontenegro.petOwner.PetOwner;
 public interface ConsultationRepository extends JpaRepository<Consultation, Long> {
 
     List<Consultation> findByPetId(Long petId);
+    List<Consultation> findAllByVetId(Long vetId);
 
 }
