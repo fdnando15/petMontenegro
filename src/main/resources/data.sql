@@ -23,8 +23,18 @@ INSERT INTO PETS (ID, BIRTH_DAY, NAME, PET_OWNER_ID) VALUES
 INSERT INTO PETS (ID, BIRTH_DAY, NAME, PET_OWNER_ID) VALUES
 (4, '2021/04/20', 'Daisy', 3);
 
+
+INSERT INTO consultation (id, subject, date, description, slot_time, pet_id) 
+VALUES (1, 'General Consult', '2025-01-16', 'General consult.', 'NINE_AM_PART1', 1);
+INSERT INTO consultation (id, subject, date, description, slot_time, pet_id)
+VALUES (2, 'Vaccination', '2025-01-17', 'Apply vaccination', 'NINE_AM_PART1', 2);
+INSERT INTO consultation (id, subject, date, description, slot_time, pet_id)
+VALUES (3, 'Problems', '2025-01-18', 'Consultation for symptoms of upset stomach.', 'NINE_AM_PART1', 3);
+
+
 -- CREATE SEQUENCE hibernate_sequence START WITH 1 INCREMENT BY 1;
 ALTER TABLE pet_owners ALTER COLUMN id RESTART WITH 100;
 ALTER TABLE clinic_owner ALTER COLUMN id RESTART WITH 100;
 ALTER TABLE pets ALTER COLUMN id RESTART WITH 100;
+-- ALTER TABLE consultations ALTER COLUMN id RESTART WITH 100;
 
