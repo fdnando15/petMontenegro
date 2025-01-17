@@ -54,7 +54,7 @@ async function cargarPets() {
   for (let pet of pets) {
     let botonEliminar = '<a href="#" onclick="eliminarPet(' + pet.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
 
-    let petHtml = '<tr><td>' + pet.name  + '</td><td>' + pet.birthDay + '</td><td>'+ botonEliminar + '</td></tr>';
+    let petHtml = '<tr><td><a href="/consultations.html?id='+pet.id+'">' + pet.name  + '</a></td><td>' + pet.birthDay + '</td><td>'+ botonEliminar + '</td></tr>';
     listadoHtml += petHtml;
   }
 
@@ -78,6 +78,27 @@ async function eliminarPet(id) {
     window.location.href = '/pets.html';
   } else {
     alert('Error al eliminar el pet');
+  }
+
+}
+
+
+async function seleccionarConsultations(id) {
+  alert('Seleccionar consultas del pet con id: ' + id);
+  const request = await fetch('api/consultations/' + id, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  });
+  // Verificamos si la eliminación fue exitosa
+  if (request.ok) {
+    // Si la eliminación fue exitosa, redirigimos a la página petOwners.html
+    window.location.href = '/consultations.html';
+  } else {
+    alert('Error al seleccionar las consultas del pet');
   }
 
 }

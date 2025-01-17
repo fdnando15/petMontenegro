@@ -29,7 +29,7 @@ public class ConsultationController {
     }
 
 
-    @GetMapping("/api/consultations")
+    @GetMapping("/api/consultations/{petId}")
     public ResponseEntity<List<Consultation>> getConsultations(HttpServletRequest request, @PathVariable Long petId) {
 
 
