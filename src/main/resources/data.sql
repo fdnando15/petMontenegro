@@ -12,6 +12,9 @@ INSERT INTO PET_OWNERS (ID, BIRTH_DAY, EMAIL, NAME, PASSWORD, PHONE, ROLE, CLINI
 INSERT INTO PET_OWNERS (ID, BIRTH_DAY, EMAIL, NAME, PASSWORD, PHONE, ROLE, CLINIC_OWNER_ID) VALUES
 (3, '1998/09/30', 'raul@gmail.com', 'Raul Black','123', '123456789', 'PET_OWNER', 2);
 
+INSERT INTO vets (ID, BIRTH_DAY, EMAIL, NAME, PASSWORD, PHONE, ROLE, CLINIC_OWNER_ID) VALUES
+(1, '1998/09/30', 'vet@gmail.com', 'Raul Black','123', '123456789', 'VET', 1);
+
 
 -- Insertar datos en la tabla PETS
 INSERT INTO PETS (ID, BIRTH_DAY, NAME, PET_OWNER_ID) VALUES
@@ -24,12 +27,12 @@ INSERT INTO PETS (ID, BIRTH_DAY, NAME, PET_OWNER_ID) VALUES
 (4, '2021/04/20', 'Daisy', 3);
 
 
-INSERT INTO consultation (id, subject, date, description, slot_time, pet_id) 
-VALUES (1, 'General Consult', '2025-01-16', 'General consult.', 'NINE_AM_PART1', 1);
-INSERT INTO consultation (id, subject, date, description, slot_time, pet_id)
-VALUES (2, 'Vaccination', '2025-01-17', 'Apply vaccination', 'NINE_AM_PART1', 2);
-INSERT INTO consultation (id, subject, date, description, slot_time, pet_id)
-VALUES (3, 'Problems', '2025-01-18', 'Consultation for symptoms of upset stomach.', 'NINE_AM_PART1', 3);
+INSERT INTO consultations (id, subject, date, description, slot_time, pet_id, vet_id) 
+VALUES (1, 'General Consult', '2025-01-16', 'General consult.', 'NINE_AM_PART1', 1, 1);
+INSERT INTO consultations (id, subject, date, description, slot_time, pet_id, vet_id)
+VALUES (2, 'Vaccination', '2025-01-17', 'Apply vaccination', 'NINE_AM_PART1', 2,  1);
+INSERT INTO consultations (id, subject, date, description, slot_time, pet_id, vet_id)
+VALUES (3, 'Problems', '2025-01-18', 'Consultation for symptoms of upset stomach.', 'NINE_AM_PART1', 3, 1);
 
 
 -- CREATE SEQUENCE hibernate_sequence START WITH 1 INCREMENT BY 1;
