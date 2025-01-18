@@ -20,4 +20,8 @@ public class PetService {
         return petRepository.findByPetOwnerId(ownerId);
     }
 
+    public void registerPet(Pet pet) {
+        petRepository.save(pet);
+    }
+
 }

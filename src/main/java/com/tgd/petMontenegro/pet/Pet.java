@@ -22,7 +22,6 @@ import lombok.Setter;
 @Table(name = "pets")
 public class Pet{
 
-    //private PetType petType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

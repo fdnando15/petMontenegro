@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tgd.petMontenegro.clinicOwner.ClinicOwner;
 import com.tgd.petMontenegro.pet.Pet;
 import com.tgd.petMontenegro.pet.PetRepository;
 
@@ -50,5 +51,14 @@ public class PetOwnerService {
             throw new IllegalStateException("Pet owner with id " + id + " does not belong to clinic owner with id " + petOwnerId);
         }
     }
+
+    public Long getPetOwnerId(String email) {
+        
+        return petOwnerRepository.findByEmail(email).getId();
+    }
+
+    public PetOwner getPetOwner(Long id) {
+        return petOwnerRepository.findById(id).get();
+}
 
 }
