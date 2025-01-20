@@ -1,5 +1,6 @@
 package com.tgd.petMontenegro.consultation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class ConsultationService {
 
     public List<Consultation> getConsultationsByVetId(Long id){
         return consultationRepository.findAllByVetId(id);
+    }
+
+    public List<String> getAvailableSlots(Long vetId, LocalDate date) {
+
+        return consultationRepository.findAvailableSlots(vetId, date);
+        
     }
 
 

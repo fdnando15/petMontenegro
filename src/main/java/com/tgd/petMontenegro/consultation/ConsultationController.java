@@ -1,8 +1,10 @@
 package com.tgd.petMontenegro.consultation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,6 +77,12 @@ public class ConsultationController {
             }
         }
         
+    
+
+    @GetMapping("api/availableSlots/{VetId}/?date={date}")
+    public List<String> getAvailableSlots(@PathVariable Long vetId, @PathVariable LocalDate date) {
+        return consultationService.getAvailableSlots(vetId, date);
     }
 
 
+}

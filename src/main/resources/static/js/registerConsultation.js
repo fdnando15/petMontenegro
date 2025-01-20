@@ -1,20 +1,23 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
 
-    cargarAvailableSlots();
+    //findVetId() PROBLEM here need vetId;
+    //cargarAvailableSlots(1, document.getElementById('date').value) PROBLEM HERE NEED DATE BEFORE TO SEND;
+    cargarAvailableSlots(1, '2025/06/01')
 
 });
 
-async function registerConsultation() {
+
+async function registerConsultation(petId) {
 
     datos = {}
 
     datos.name = document.getElementById('subject').value
     datos.birthDay = document.getElementById('date').value
-    datos.birthDay = document.getElementById('description').value
-    datos.birthDay = document.getElementById('slot').value
+    datos.description = document.getElementById('description').value
+    datos.slot = document.getElementById('slot').value
     
-    const request = await fetch('/api/consultation', {
+    const request = await fetch('/api/newConsultation/' + petId, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -34,10 +37,10 @@ async function registerConsultation() {
     }
 }
 
-async function cargarAvailableSlots() {
+async function cargarAvailableSlots(VetId, date) {
     try {
   
-        const response = await fetch('api/availableSlots', {
+        const response = await fetch('api/availableSlots/' + VetId + '/?date=' + date, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -52,7 +55,7 @@ async function cargarAvailableSlots() {
         slots = await response.json(); // Guarda el array de clinicOwners en la variable global
         console.log(slots);
   
-        // Obtén el select con el id "clinicOwners"
+        // Obtén los slots del select
         const selectSlots = document.querySelector('#slot');
   
         // Limpia las opciones previas del select

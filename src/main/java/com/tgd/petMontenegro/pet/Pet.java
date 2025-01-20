@@ -7,6 +7,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tgd.petMontenegro.petOwner.PetOwner;
+import com.tgd.petMontenegro.vet.Vet;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,5 +35,7 @@ public class Pet{
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PetOwner petOwner;
+    @ManyToOne
+    private Vet vet;
 
 }
