@@ -3,10 +3,13 @@ $(document).ready(function() {
 
     //findVetId() PROBLEM here need vetId;
     //cargarAvailableSlots(1, document.getElementById('date').value) PROBLEM HERE NEED DATE BEFORE TO SEND;
-    cargarAvailableSlots(1, '2025/06/01')
 
 });
 
+$('#date').change(function() {
+    cargarAvailableSlots(1, document.getElementById('date').value);
+}
+);
 
 async function registerConsultation(petId) {
 
@@ -40,7 +43,7 @@ async function registerConsultation(petId) {
 async function cargarAvailableSlots(VetId, date) {
     try {
   
-        const response = await fetch('api/availableSlots/' + VetId + '/?date=' + date, {
+        const response = await fetch('api/availableSlots/' + VetId + '/' + date, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -61,10 +64,35 @@ async function cargarAvailableSlots(VetId, date) {
         // Limpia las opciones previas del select
         selectSlots.innerHTML = '<option value="">--Selecciona--</option>';
   
+        let slotMap = {
+            'NINE_AM_PART1': '9:00 - 9:30',
+            'NINE_AM_PART2': '9:30 - 10:00',
+            'TEN_AM_PART1': '10:00 - 10:30',
+            'TEN_AM_PART2': '10:30 - 11:00',
+            'ELEVEN_AM_PART1': '11:00 - 11:30',
+            'ELEVEN_AM_PART2': '11:30 - 12:00',
+            'TWELVE_PM_PART1': '12:00 - 12:30',
+            'TWELVE_PM_PART2': '12:30 - 13:00',
+            'THREE_PM_PART1': '13:00 - 13:30',
+            'THREE_PM_PART2': '13:30 - 14:00',
+            'FOUR_PM_PART1': '14:00 - 14:30',
+            'FOUR_PM_PART2': '14:30 - 15:00',
+            'FIVE_PM_PART1': '15:00 - 15:30',
+            'FIVE_PM_PART2': '15:30 - 16:00',
+            'SIX_PM_PART1': '16:00 - 16:30',
+            'SIX_PM_PART2': '16:30 - 17:00',
+            'SEVEN_PM_PART1': '17:00 - 17:30',
+            'SEVEN_PM_PART2': '17:30 - 18:00',
+            'EIGHT_PM_PART1': '18:00 - 18:30',
+            'EIGHT_PM_PART2': '18:30 - 19:00',
+            'NINE_PM_PART1': '19:00 - 19:30',
+            'NINE_PM_PART2': '19:30 - 20:00'
+        }
         // Genera las opciones dinámicamente
         for (let slot of slots) {
             const option = document.createElement('option');
             option.value = slot;
+            option.textContent = slotMap[slot];
             selectSlots.appendChild(option); // Agrega la opción al select
         }
     } catch (error) {

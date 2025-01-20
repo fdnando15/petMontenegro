@@ -79,9 +79,9 @@ public class ConsultationController {
         
     
 
-    @GetMapping("api/availableSlots/{VetId}/?date={date}")
-    public List<String> getAvailableSlots(@PathVariable Long vetId, @PathVariable LocalDate date) {
-        return consultationService.getAvailableSlots(vetId, date);
+    @GetMapping("api/availableSlots/{VetId}/{date}")
+    public List<String> getAvailableSlots(@PathVariable Long VetId, @PathVariable LocalDate date) {
+        return consultationService.getAvailableSlots(VetId, date);
     }
 
 

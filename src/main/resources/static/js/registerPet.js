@@ -19,8 +19,6 @@ async function registerPet() {
       },
       body: JSON.stringify(datos),
     });
-
-    const response =  await request.json();      
     
     if (request.ok) {
         alert('Pet registrado correctamente')
