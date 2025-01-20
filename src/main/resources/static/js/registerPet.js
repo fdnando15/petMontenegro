@@ -20,14 +20,13 @@ async function registerPet() {
       body: JSON.stringify(datos),
     });
 
-    // const response =  await request.json();      
+    const response =  await request.json();      
     
-    if (response.status == 'OK') {
+    if (request.ok) {
         alert('Pet registrado correctamente')
         window.location.href = '/pets.html';
     } else {
         alert('Error al registrar el Pet')
-      
     }
 }
  

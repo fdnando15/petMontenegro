@@ -52,7 +52,7 @@ public class PetController {
                 pet.setPetOwner(petOwner);
                 System.out.println(petOwner);
                 petService.registerPet(pet);
-                return ResponseEntity.noContent().build();
+                return ResponseEntity.ok().build();
 
             } catch (Exception e) {
                 // Manejar errores genéricos o personalizar según el tipo de excepción
