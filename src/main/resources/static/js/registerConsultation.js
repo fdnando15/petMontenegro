@@ -1,6 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
 
+
     //findVetId() PROBLEM here need vetId;
     //cargarAvailableSlots(1, document.getElementById('date').value) PROBLEM HERE NEED DATE BEFORE TO SEND;
 
@@ -11,14 +12,21 @@ $('#date').change(function() {
 }
 );
 
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+/*  async function getVetId(petId) {}*/
+
 async function registerConsultation(petId) {
 
     datos = {}
 
-    datos.name = document.getElementById('subject').value
-    datos.birthDay = document.getElementById('date').value
+    datos.subject = document.getElementById('subject').value
+    datos.date = document.getElementById('date').value  
     datos.description = document.getElementById('description').value
-    datos.slot = document.getElementById('slot').value
+    datos.slotTime = document.getElementById('slot').value
     
     const request = await fetch('/api/newConsultation/' + petId, {
       method: 'POST',
@@ -29,8 +37,7 @@ async function registerConsultation(petId) {
       },
       body: JSON.stringify(datos),
     });
-
-    const response =  await request.json();      
+     
     
     if (request.ok) {
         alert('Consultation registrado correctamente')

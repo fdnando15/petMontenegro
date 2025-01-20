@@ -55,7 +55,12 @@ public class ConsultationService {
         
     }
 
+    public void newConsultation(Consultation consultation,Long petId) {
+
+        consultation.setPet(petRepository.findById(petId).get());
+        consultationRepository.save(consultation);
+    }
 
     
-
+        
 }

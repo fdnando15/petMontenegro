@@ -39,5 +39,5 @@ VALUES (3, 'Problems', '2025-01-18', 'Consultation for symptoms of upset stomach
 ALTER TABLE pet_owners ALTER COLUMN id RESTART WITH 100;
 ALTER TABLE clinic_owner ALTER COLUMN id RESTART WITH 100;
 ALTER TABLE pets ALTER COLUMN id RESTART WITH 100;
--- ALTER TABLE consultations ALTER COLUMN id RESTART WITH 100;
+ALTER TABLE consultations ALTER COLUMN id RESTART WITH 100;
 
