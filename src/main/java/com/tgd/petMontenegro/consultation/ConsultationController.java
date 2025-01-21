@@ -87,8 +87,8 @@ public class ConsultationController {
     }
 
 
-    @PostMapping("/api/newConsultation/{petId}")
-    public ResponseEntity<Void> newConsultation(HttpServletRequest request, @PathVariable Long petId, @RequestBody Consultation consultation) {
+    @PostMapping("/api/newConsultation")
+    public ResponseEntity<Void> newConsultation(HttpServletRequest request, @RequestBody DTOconsultation consultation) {
 
 
         try {
@@ -122,7 +122,7 @@ public class ConsultationController {
 
                 // Recuperar y devolver los PetOwners asociados
                
-                consultationService.newConsultation(consultation, petId);
+                consultationService.newConsultation(consultation, (long)consultation.getPetId());
                 
                 return ResponseEntity.noContent().build();
 

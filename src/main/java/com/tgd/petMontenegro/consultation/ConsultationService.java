@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.tgd.petMontenegro.pet.Pet;
 import com.tgd.petMontenegro.pet.PetRepository;
+import com.tgd.petMontenegro.pet.PetService;
+import com.tgd.petMontenegro.vet.Vet;
 import com.tgd.petMontenegro.vet.VetRepostitory;
 
 @Service
@@ -55,10 +57,21 @@ public class ConsultationService {
         
     }
 
-    public void newConsultation(Consultation consultation,Long petId) {
+    public void newConsultation(DTOconsultation consultation,Long petId) {
 
-        consultation.setPet(petRepository.findById(petId).get());
-        consultationRepository.save(consultation);
+        Consultation newConsultation = new Consultation();
+        newConsultation.setDate(consultation.getDate());
+        newConsultation.setSubject(consultation.getSubject());
+        newConsultation.setDescription(consultation.getDescription());
+
+        Pet pet = petRepository.findById(petId).get();
+        Vet vet = pet.getVet();
+
+        newConsultation.setSlotTime(consultation.getSlotTime());
+        newConsultation.setVet(vet);
+        newConsultation.setPet(pet);
+        
+        consultationRepository.save(newConsultation);
     }
 
     

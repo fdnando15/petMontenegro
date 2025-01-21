@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     //findVetId() PROBLEM here need vetId;
     //cargarAvailableSlots(1, document.getElementById('date').value) PROBLEM HERE NEED DATE BEFORE TO SEND;
-
+    console.log(getQueryParam("id"));
 });
 
 $('#date').change(function() {
@@ -19,7 +19,7 @@ function getQueryParam(param) {
 
 /*  async function getVetId(petId) {}*/
 
-async function registerConsultation(petId) {
+async function registerConsultation() {
 
     datos = {}
 
@@ -27,8 +27,9 @@ async function registerConsultation(petId) {
     datos.date = document.getElementById('date').value  
     datos.description = document.getElementById('description').value
     datos.slotTime = document.getElementById('slot').value
+    datos.petId = getQueryParam("id")
     
-    const request = await fetch('/api/newConsultation/' + petId, {
+    const request = await fetch('/api/newConsultation', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -41,12 +42,15 @@ async function registerConsultation(petId) {
     
     if (request.ok) {
         alert('Consultation registrado correctamente')
-        window.location.href = '/consultations.html';
+        window.location.href = '/consultations.html?id='+getQueryParam("id");
     } else {
         alert('Error al registrar la consultation')
     }
 }
-
+function getQueryParam(name) {
+    let urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
 async function cargarAvailableSlots(VetId, date) {
     try {
   

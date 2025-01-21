@@ -8,7 +8,11 @@ $(document).ready(function() {
     actualizarEmail()
     //mostrarLocalStorage()
     cargarConsultations(getQueryParam("id"))
-});
+    let url = $("#consultation").attr('href');
+    url = url + "?id=" + getQueryParam("id");
+
+    $("#consultation").attr('href', url);
+  });
 
 function actualizarEmail() {
     //document.querySelector('#txt-email-usuario').innerHTML = localStorage.getItem();
