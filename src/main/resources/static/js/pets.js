@@ -43,8 +43,7 @@ async function cargarPets() {
   for (let pet of pets) {
     let botonEliminar = '<a href="#" onclick="eliminarPet(' + pet.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
 
-    let petHtml = '<tr><td><a href="/consultations.html?id='+pet.id+'">' + pet.name  + '</a></td><td>' + pet.birthDay + '</td><td>'+ botonEliminar + '</td></tr>';
-    listadoHtml += petHtml;
+    let petHtml = '<tr><td><img width="60px" height="60px" src="'+ (pet.url ? pet.url.replace("/resources","") : "https://www.ecestaticos.com/imagestatic/clipping/b93/4a7/b934a73f42cfe61d874e563914aedf17/estos-son-los-perros-mas-feos-del-mundo.jpg?mtime=1622868118") +'" /></td><td><a href="/consultations.html?id='+pet.id+'">' + pet.name  + '</a></td><td>' + pet.birthDay + '</td><td>'+ botonEliminar + '</td></tr>';    listadoHtml += petHtml;
   }
 
 document.querySelector('#pets tbody').outerHTML = listadoHtml;

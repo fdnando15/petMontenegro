@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tgd.petMontenegro.petOwner.PetOwner;
@@ -37,5 +38,8 @@ public class Pet{
     private PetOwner petOwner;
     @ManyToOne
     private Vet vet;
+
+    @Value("https://www.ecestaticos.com/imagestatic/clipping/b93/4a7/b934a73f42cfe61d874e563914aedf17/estos-son-los-perros-mas-feos-del-mundo.jpg?mtime=1622868118")
+    private String url;
 
 }
