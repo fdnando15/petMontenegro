@@ -1,11 +1,11 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
 
-    actualizarEmail()
-    cargarAbandonPets()
-    mostrarLocalStorage()
-
-  $('#pets').DataTable();
+    actualizarEmail();
+    cargarAbandonPets().then(() => {
+        $('#pets').DataTable();
+    });
+    mostrarLocalStorage();
 
   
 });
