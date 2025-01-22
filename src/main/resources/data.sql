@@ -35,6 +35,17 @@ INSERT INTO consultations (id, subject, date, description, slot_time, pet_id, ve
 VALUES (3, 'Problems', '2025-01-18', 'Consultation for symptoms of upset stomach.', 'NINE_AM_PART1', 3, 1);
 
 
+-- Insertar datos en la tabla abandonPets
+INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
+(1, '2020/06/15', 'Buddy');
+INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
+(2, '2018/11/05', 'Bella');
+INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
+(3, '2019/02/14', 'Max');
+INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
+(4, '2021/04/20', 'Daisy');
+
+
 -- CREATE SEQUENCE hibernate_sequence START WITH 1 INCREMENT BY 1;
 ALTER TABLE pet_owners ALTER COLUMN id RESTART WITH 100;
 ALTER TABLE clinic_owner ALTER COLUMN id RESTART WITH 100;
