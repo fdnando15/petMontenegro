@@ -17,8 +17,16 @@ public class AbandonPetService {
         return abandoPetRepository.findAll();
     }
 
+    public AbandonPet getAbandonPet(Long id){
+        return abandoPetRepository.getById(id);
+    }
+
     public void deleteAbandonPet(Long id) {
         abandoPetRepository.deleteById(id);
+    }
+
+    public void registerAbandonPet(AbandonPet abandonPetpet) {
+        abandoPetRepository.save(abandonPetpet);
     }
 
 }

@@ -41,7 +41,7 @@ async function cargarAbandonPets() {
 
   let listadoHtml = '';
   for (abandonPet of abandonPets) {
-    let botonAdoptar = '<a href="#" onclick="eliminarAbandonPet(' + abandonPet.id + ')" onclick="createPet(' + abandonPet.id + ')" class="btn btn-success btn-circle"><i class="fas fa-check"></i></a>';
+    let botonAdoptar = '<a href="#" onclick="eliminarAbandonPet(' + abandonPet.id + ')" class="btn btn-success btn-circle"><i class="fas fa-check"></i></a>';
 
     let petHtml = '<tr><td><img width="60px" height="60px" src="'+ (abandonPet.url ? abandonPet.url.replace("/resources","") : "https://www.ecestaticos.com/imagestatic/clipping/b93/4a7/b934a73f42cfe61d874e563914aedf17/estos-son-los-perros-mas-feos-del-mundo.jpg?mtime=1622868118") +'" /></td><td><a href="/consultations.html?id='+abandonPet.id+'">' + abandonPet.name  + '</a></td><td>' + abandonPet.birthDay + '</td><td>'+ botonAdoptar + '</td></tr>';    listadoHtml += petHtml;
   }
@@ -53,7 +53,7 @@ document.querySelector('#pets tbody').outerHTML = listadoHtml;
 async function eliminarAbandonPet(id) {
   alert('Eliminar el petOwner con id: ' + id);
   const request = await fetch('api/abandonPets/' + id, {
-    method: 'DELETE',
+    method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -62,7 +62,6 @@ async function eliminarAbandonPet(id) {
   });
   // Verificamos si la eliminación fue exitosa
   if (request.ok) {
-    // Si la eliminación fue exitosa, redirigimos a la página petOwners.html
     window.location.href = '/pets.html';
   } else {
     alert('Error al eliminar el pet');
@@ -70,22 +69,4 @@ async function eliminarAbandonPet(id) {
 
 }
 
-
-async function createPet() {
-  
-    const request = await fetch('/api/changeAbandonPetToPet', {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        },
-        body: pet,
-    });
-  
-    if (request.ok) {
-        alert('Pet registrado correctamente');
-        window.location.href = '/pets.html';
-    } else {
-        alert('Error al registrar el Pet');
-    }
-  }
 
