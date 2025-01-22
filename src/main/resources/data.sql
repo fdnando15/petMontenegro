@@ -37,13 +37,13 @@ VALUES (3, 'Problems', '2025-01-18', 'Consultation for symptoms of upset stomach
 
 -- Insertar datos en la tabla abandonPets
 INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
-(1, '2020/06/15', 'Buddy');
+(1, '2020/06/15', 'Abandon Leo');
 INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
-(2, '2018/11/05', 'Bella');
+(2, '2018/11/05', 'Abandon Carl');
 INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
-(3, '2019/02/14', 'Max');
+(3, '2019/02/14', 'Abandon Max');
 INSERT INTO abandon_Pets (ID, BIRTH_DAY, NAME) VALUES
-(4, '2021/04/20', 'Daisy');
+(4, '2021/04/20', 'Abandon Chispa');
 
 
 -- CREATE SEQUENCE hibernate_sequence START WITH 1 INCREMENT BY 1;
