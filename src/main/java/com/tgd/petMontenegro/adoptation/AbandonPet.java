@@ -32,7 +32,7 @@ public class AbandonPet {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private String birthDay;
 
-    @Value("https://www.ecestaticos.com/imagestatic/clipping/b93/4a7/b934a73f42cfe61d874e563914aedf17/estos-son-los-perros-mas-feos-del-mundo.jpg?mtime=1622868118")
+    @Value("petMontenegro/src/main/resources/static/img/uploads/abandondog.jpg")
     private String url;
 
 

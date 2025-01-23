@@ -44,7 +44,7 @@ async function cargarAbandonPets() {
   for (abandonPet of abandonPets) {
     let botonAdoptar = '<a href="#" onclick="eliminarAbandonPet(' + abandonPet.id + ')" class="btn btn-success btn-circle"><i class="fas fa-check"></i></a>';
 
-    let petHtml = '<tr><td><img width="60px" height="60px" src="'+ (abandonPet.url ? abandonPet.url.replace("/resources","") : "https://www.ecestaticos.com/imagestatic/clipping/b93/4a7/b934a73f42cfe61d874e563914aedf17/estos-son-los-perros-mas-feos-del-mundo.jpg?mtime=1622868118") +'" /></td><td><a href="/consultations.html?id='+abandonPet.id+'">' + abandonPet.name  + '</a></td><td>' + abandonPet.birthDay + '</td><td>'+ botonAdoptar + '</td></tr>';    listadoHtml += petHtml;
+    let petHtml = '<tr><td><img width="60px" height="60px" src="'+ (abandonPet.url ? abandonPet.url.replace("/resources","") : "/img/uploads/dog.jpg") +'" /></td><td><a href="/consultations.html?id='+abandonPet.id+'">' + abandonPet.name  + '</a></td><td>' + abandonPet.birthDay + '</td><td>'+ botonAdoptar + '</td></tr>';    listadoHtml += petHtml;
   }
 
 document.querySelector('#pets tbody').outerHTML = listadoHtml;
